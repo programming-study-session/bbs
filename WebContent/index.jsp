@@ -4,7 +4,8 @@
 	<div align="center">Java•×‹­‰ï‚Ö</div>
 	<br>
 	<br>
-	<form action="/SkillShare/thread.jsp" method="POST">
+	<form action="./Search" Method="GET">
+		<input type="hidden" name="thread_id" value="11" />
 		<div align="center"><input type="submit" value="“üŽº"></div>
 	</form>
 </body>

@@ -1,16 +1,43 @@
 <%@ page language="java" contentType="text/html;charset=Windows-31J"%>
+<%@page import="java.sql.*"%>
+
+
 <html>
 <body>
-<h1>java勉強会</h1>
-<a href="http://localhost:8080/SkillShare/thread.jsp"><p>12/22(日)開催予定のJava勉強会について</p></a>
-<a href="http://localhost:8080/SkillShare/thread2.jsp"><p>MySQL基本操作について</p></a>
-<a href="http://localhost:8080/SkillShare/thread3.jsp"><p>HelloWorldをTomCatで表示</p></a>
+	<%
+		ResultSet comment_result_set = (ResultSet) request.getAttribute("comment_kekka");
+		ResultSet thread_result_set = (ResultSet) request.getAttribute("thread_kekka");
+		ResultSet thread_info_result_set = (ResultSet) request.getAttribute("thread_info_kekka");
+		String thread_no_info = null;
+		String thread_title_info = null;
+	%>
+	
+	<%
+		//スレッド情報の取得
+		while(thread_info_result_set.next()){
+		
+		thread_no_info = thread_info_result_set.getString(1);
+		thread_title_info = thread_info_result_set.getString(2);
+	}
+	%>
 
-<form method="post" action="example.cgi">
+<h1>java勉強会</h1>
+
+		<%
+			while (thread_result_set.next()) {
+		%>
+
+<p><a href="./Search?thread_id=<%=thread_result_set.getString(1)%>"><%=thread_result_set.getString(2)%></a></p>
+
+		<%
+			}
+		%>
+<form action="./ThreadEdit" method="POST">
 <p>トピック<input type="text" name="topic"></p>
 <input type="submit" value="作成">
+</form>
 <p>------------------------------------------------------------------------</p>
-<h1>MySQL基本操作について</h1>
+<h1><%=thread_title_info%></h1>
 <table border="1">
 <tr>
 	<th>No</th>
@@ -18,23 +45,28 @@
 	<th>メッセージ</th>
 	<th>時間</th>
 </tr>
-<tr>
-	<td>1</td>
-	<td>細江</td>
-	<td>MySQLってそもそも何ですか?</td>
-	<td>2019/12/01/14:01.59</td>
-</tr>
-<tr>
-	<td>2</td>
-	<td>鈴木(裕)</td>
-	<td>https://www.sejuku.net/blog/9021このサイトを見れば直ぐわかると思います。</td>
-	<td>2019/12/01/14:29.33</td>
-</tr>
+<%if(comment_result_set!= null) { %>
+
+
+		<%
+			while (comment_result_set.next()) {
+		%>
+		<tr>
+			<td><%=comment_result_set.getString(3)%></td>
+			<td><%=comment_result_set.getString(4)%></td>
+			<td><%=comment_result_set.getString(5)%></td>
+			<td><%=comment_result_set.getString(6)%></td>
+		</tr>
+		<%
+	}
+		}
+		%>
 </table>
 
-<form method="post" action="example.cgi">
+<form action="./CommentEdit" method="post">
 <p>名前<input type="text" name="name"></p>
-メッセージ<input type="text" name="message">
-<input type="submit" value="投稿">
-
+<p>メッセージ<input type="text" name="comment"></p>
+<input type="hidden" name="thread_id" value="<%=thread_no_info%>"/>
+	<input type="submit" value="投稿">
+</form>
 </body>
