@@ -6,7 +6,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ThreadEdit extends HttpServlet {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -30,14 +29,14 @@ public class ThreadEdit extends HttpServlet {
 		PreparedStatement thread_info_state = null;
 		ResultSet thread_result_set = null;
 		ResultSet thread_info_result_set = null;
-		
-		
+
+
 		// 文字コードの設定
 		request.setCharacterEncoding("Windows-31J");
 
 		//thread2から作成するスレッド名を取得
 		String topic = request.getParameter("topic");
-	
+
 		try {
 			// JDBC Driver の登録
 			Class.forName("com.mysql.jdbc.Driver");
@@ -49,7 +48,7 @@ public class ThreadEdit extends HttpServlet {
 			// sql文 の作成
 			String sql_thread_insert = "insert into thread_list(thread_title)";
 			sql_thread_insert = sql_thread_insert + "values"+ "(\""  + topic + "\");";
-		
+
 			// sql文を表示
 			System.out.println(sql_thread_insert);
 
@@ -59,13 +58,13 @@ public class ThreadEdit extends HttpServlet {
 			// sql文実行
 			thread_insert_state.execute();
 
-//スレッドの一覧を表示----------------------------------------------------------------------			
+//スレッドの一覧を表示----------------------------------------------------------------------
 			// sql文 の作成
 			String sql_thread_read = "select * from thread_list;";
-			
+
 			//sql文を表示
 			System.out.println(sql_thread_read);
-			
+
 			thread_read_state = conn.prepareStatement(new String(sql_thread_read));
 
 				// sql文実行
@@ -73,28 +72,28 @@ public class ThreadEdit extends HttpServlet {
 
 			// 実行結果を、ResultSetクラスに代入
 			thread_result_set = thread_read_state.executeQuery();
-			
+
 
 			// 遷移ページへ、引渡し（Attributeで追加する）
 			request.setAttribute("thread_kekka", thread_result_set);
-			
+
 //対応スレッド情報の表示-----------------------------------------------------------------------------------
-			//sql文作成の準備 
-			String sql_thread_info = "select thread_id, thread_title from thread_list where thread_id=(select max(thread_id) from thread_list);";	
-			
+			//sql文作成の準備
+			String sql_thread_info = "select thread_id, thread_title from thread_list where thread_id=(select max(thread_id) from thread_list);";
+
 			// sql文を表示
-			System.out.println(sql_thread_info);	
-			
+			System.out.println(sql_thread_info);
+
 			// sql文実行準備
 			thread_info_state = conn.prepareStatement(new String(sql_thread_info));
-			
+
 			// sql文実行
 			thread_info_state.execute();
-			
-			// 実行結果を、ResultSetクラスに代入 
+
+			// 実行結果を、ResultSetクラスに代入
 			thread_info_result_set = thread_info_state.executeQuery();
-			
-			// 遷移ページへ、引渡し（Attributeで追加する） 
+
+			// 遷移ページへ、引渡し（Attributeで追加する）
 			request.setAttribute("thread_info_kekka", thread_info_result_set);
 //-------------------------------------------------------------------------------------
 
@@ -109,7 +108,7 @@ public class ThreadEdit extends HttpServlet {
 			thread_info_state.close();
 			thread_result_set.close();
 			thread_info_result_set.close();
-			
+
 		} catch (Exception e) {
 			request.getRequestDispatcher("/Eroor.jsp");
 
