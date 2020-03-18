@@ -11,11 +11,11 @@
 		String thread_no_info = null;
 		String thread_title_info = null;
 	%>
-	
+
 	<%
 		//スレッド情報の取得
 		while(thread_info_result_set.next()){
-		
+
 		thread_no_info = thread_info_result_set.getString(1);
 		thread_title_info = thread_info_result_set.getString(2);
 	}
@@ -69,8 +69,7 @@
 <form action="./CommentEdit" method="post">
 <br>
 	<fieldset>
-	<legend>名前</legend>
-		<input type="text" name="name">
+		<input type="hidden" name="UserId" value="00002">
 	<legend>メッセージ</legend>
 		<input type="text" name="comment" style="width:40.0em;"style="height:10.0em;">
 		<input type="hidden" name="thread_id" value="<%=thread_no_info%>" />
