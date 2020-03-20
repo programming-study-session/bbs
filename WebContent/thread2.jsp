@@ -35,6 +35,7 @@
 <fieldset>
 		<legend>トピックを追加する</legend>
 	<form action="./ThreadEdit" method="POST">
+		<input type="hidden" name="UserID" value="00002">
 		<input type="text" name="topic" style="width:25.0em;">
 		<input type="submit" value="作成">
 	</form>

@@ -24,9 +24,11 @@ public class ThreadEdit extends HttpServlet {
 
 		// DB関連の初期設定
 		Connection conn = null;
+		PreparedStatement thread_creator_state = null;
 		PreparedStatement thread_insert_state = null;
 		PreparedStatement thread_read_state = null;
 		PreparedStatement thread_info_state = null;
+		ResultSet thread_creator_result_set = null;
 		ResultSet thread_result_set = null;
 		ResultSet thread_info_result_set = null;
 
@@ -34,8 +36,9 @@ public class ThreadEdit extends HttpServlet {
 		// 文字コードの設定
 		request.setCharacterEncoding("Windows-31J");
 
-		//thread2から作成するスレッド名を取得
+		//thread2から作成するスレッド名,スレッド作成者のIDを取得
 		String topic = request.getParameter("topic");
+		String UserId = request.getParameter("UserID");
 
 		try {
 			// JDBC Driver の登録
@@ -43,11 +46,30 @@ public class ThreadEdit extends HttpServlet {
 			// Connectionの作成
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/java_study?serverTimezone=UTC&useSSL=false",
 					"root", "searchman");
+//スレッド作成者の名前をuses_listから読み出し-------------------------------------------------------------------------
+
+			//sql文の作成
+            String sql_thread_creator = "select * from users_list where id =" + UserId + ";";
+            System.out.println(sql_thread_creator);
+
+            //
+            thread_creator_state = conn.prepareStatement(new String(sql_thread_creator));
+            thread_creator_state.execute();
+            thread_creator_result_set = thread_creator_state.executeQuery();
+
+
+
+            String thread_creator = null;
+
+            while(thread_creator_result_set.next()) {
+            	thread_creator = thread_creator_result_set.getString(2);
+            }
+            System.out.println(thread_creator);
 
 //スレッドの作成処理------------------------------------------------------------------------
 			// sql文 の作成
-			String sql_thread_insert = "insert into thread_list(thread_title)";
-			sql_thread_insert = sql_thread_insert + "values"+ "(\""  + topic + "\");";
+			String sql_thread_insert = "insert into thread_list(thread_title,name,time)";
+			sql_thread_insert = sql_thread_insert + "values"+ "(\""  + topic + "\",\""+ thread_creator + "\"," + "now()" +");";
 
 			// sql文を表示
 			System.out.println(sql_thread_insert);
