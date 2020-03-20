@@ -11,11 +11,11 @@
 		String thread_no_info = null;
 		String thread_title_info = null;
 	%>
-	
+
 	<%
 		//スレッド情報の取得
 		while(thread_info_result_set.next()){
-		
+
 		thread_no_info = thread_info_result_set.getString(1);
 		thread_title_info = thread_info_result_set.getString(2);
 	}
@@ -35,6 +35,7 @@
 <fieldset>
 		<legend>トピックを追加する</legend>
 	<form action="./ThreadEdit" method="POST">
+		<input type="hidden" name="UserID" value="00002">
 		<input type="text" name="topic" style="width:25.0em;">
 		<input type="submit" value="作成">
 	</form>
