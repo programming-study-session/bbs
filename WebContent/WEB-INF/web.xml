@@ -9,17 +9,22 @@
 		<servlet-name>SearchServlet</servlet-name>
 		<servlet-class>info.java.study.SearchServlet</servlet-class>
 	</servlet>
-	
+
 	<servlet>
 		<servlet-name>bean</servlet-name>
 		<servlet-class>info.java.study.bean</servlet-class>
     </servlet>
-    
+
+    <servlet>
+		<servlet-name>Enter_char_judge</servlet-name>
+		<servlet-class>info.java.study.Enter_char_judge</servlet-class>
+    </servlet>
+
     <servlet>
 		<servlet-name>ThreadEdit</servlet-name>
 		<servlet-class>info.java.study.ThreadEdit</servlet-class>
     </servlet>
-    
+
     <servlet>
 		<servlet-name>CommentEdit</servlet-name>
 		<servlet-class>info.java.study.CommentEdit</servlet-class>
@@ -29,17 +34,23 @@
 		<servlet-name>SearchServlet</servlet-name>
 		<url-pattern>/Search</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet-mapping>
 		<servlet-name>bean</servlet-name>
 		<url-pattern>/bean</url-pattern>
 	</servlet-mapping>
-	
+
+	<servlet-mapping>
+		<servlet-name>Enter_char_judge</servlet-name>
+		<url-pattern>/Enter</url-pattern>
+	</servlet-mapping>
+
+
 	<servlet-mapping>
 		<servlet-name>ThreadEdit</servlet-name>
 		<url-pattern>/ThreadEdit</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet-mapping>
 		<servlet-name>CommentEdit</servlet-name>
 		<url-pattern>/CommentEdit</url-pattern>
