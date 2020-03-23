@@ -114,7 +114,7 @@ public class SearchServlet extends HttpServlet {
 			conn.close();
 
 		} catch (Exception e) {
-			request.getRequestDispatcher("/Eroor.jsp");
+			response.sendRedirect("\"http://localhost:8090/SkillShare/Eroor.jsp");
 
 		} finally {
 			try {
