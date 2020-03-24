@@ -5,6 +5,12 @@
     "http://java.sun.com/dtd/web-app_2_3.dtd">
 
 <web-app>
+
+	<servlet>
+		<servlet-name>Login</servlet-name>
+		<servlet-class>info.java.study.Login</servlet-class>
+	</servlet>
+
 	<servlet>
 		<servlet-name>SearchServlet</servlet-name>
 		<servlet-class>info.java.study.SearchServlet</servlet-class>
@@ -29,6 +35,11 @@
 		<servlet-name>CommentEdit</servlet-name>
 		<servlet-class>info.java.study.CommentEdit</servlet-class>
     </servlet>
+
+	<servlet-mapping>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>/Login</url-pattern>
+	</servlet-mapping>
 
 	<servlet-mapping>
 		<servlet-name>SearchServlet</servlet-name>

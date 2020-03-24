@@ -33,7 +33,7 @@ public class SearchServlet extends HttpServlet {
 		// 文字コードの設定
 		request.setCharacterEncoding("Windows-31J");
 
-		// index.jspで入力したthread_idの取得
+		// thread_id(読み出し対象のスレッド情報)取得
 		 String thread_id = request.getParameter("thread_id");
 
 		try {

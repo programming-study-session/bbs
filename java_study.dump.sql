@@ -56,7 +56,7 @@ CREATE TABLE `thread_list` (
   `name` varchar(30) DEFAULT NULL,
   `time` datetime DEFAULT NULL,
   PRIMARY KEY (`thread_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,7 +65,7 @@ CREATE TABLE `thread_list` (
 
 LOCK TABLES `thread_list` WRITE;
 /*!40000 ALTER TABLE `thread_list` DISABLE KEYS */;
-INSERT INTO `thread_list` VALUES (13,'①テスト',NULL,NULL),(14,'②テスト',NULL,NULL),(15,'③テスト',NULL,NULL),(16,'④テスト',NULL,NULL),(17,'⑤テスト',NULL,NULL),(19,'⑥テスト',NULL,NULL),(20,'⑦テスト',NULL,NULL),(21,'⑧テスト',NULL,NULL),(22,'⑨テスト',NULL,NULL),(23,'⑩テスト',NULL,NULL),(24,'テスト⑪',NULL,NULL),(25,'⑫テスト',NULL,NULL),(26,'',NULL,NULL),(27,'',NULL,NULL),(28,'',NULL,NULL),(29,'⑬テスト',NULL,NULL),(30,'⑭テスト','細江洸作','2020-03-20 15:16:00'),(31,'⑮テスト','細江洸作','2020-03-20 15:48:08');
+INSERT INTO `thread_list` VALUES (13,'①テスト',NULL,NULL),(14,'②テスト',NULL,NULL),(15,'③テスト',NULL,NULL),(16,'④テスト',NULL,NULL),(17,'⑤テスト',NULL,NULL),(19,'⑥テスト',NULL,NULL),(20,'⑦テスト',NULL,NULL),(21,'⑧テスト',NULL,NULL),(22,'⑨テスト',NULL,NULL),(23,'⑩テスト',NULL,NULL),(24,'テスト⑪',NULL,NULL),(25,'⑫テスト',NULL,NULL),(26,'',NULL,NULL),(27,'',NULL,NULL),(28,'',NULL,NULL),(29,'⑬テスト',NULL,NULL),(30,'⑭テスト','細江洸作','2020-03-20 15:16:00'),(31,'⑮テスト','細江洸作','2020-03-20 15:48:08'),(32,'⑯　テスト','細江洸作','2020-03-22 15:15:44'),(33,'　　　　','細江洸作','2020-03-22 15:34:47'),(34,'　　','細江洸作','2020-03-22 15:37:03'),(35,'　 ','細江洸作','2020-03-22 15:38:44'),(36,'  ','細江洸作','2020-03-22 15:40:32'),(37,'   ','細江洸作','2020-03-22 15:53:56'),(38,'  ','細江洸作','2020-03-22 15:55:27'),(39,'  ','細江洸作','2020-03-22 15:57:58'),(40,'  ','細江洸作','2020-03-22 16:00:42'),(41,'  ','細江洸作','2020-03-22 16:01:04'),(42,' ','細江洸作','2020-03-22 16:02:12'),(43,'　','細江洸作','2020-03-22 21:27:38'),(44,'　　','細江洸作','2020-03-22 21:29:58'),(45,'テ　スト 2','細江洸作','2020-03-22 21:34:31'),(46,'テ スト　15','細江洸作','2020-03-22 21:36:09'),(47,'　','細江洸作','2020-03-22 21:45:19'),(48,' 　','細江洸作','2020-03-22 21:48:24'),(49,'　　','細江洸作','2020-03-22 21:48:55'),(50,'　　 ','細江洸作','2020-03-22 22:41:59');
 /*!40000 ALTER TABLE `thread_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -83,6 +83,7 @@ CREATE TABLE `users_list` (
   `birthday` date DEFAULT NULL,
   `age` int(3) DEFAULT NULL,
   `mother_id` char(5) DEFAULT NULL,
+  `password` char(12) DEFAULT NULL,
   `last_update` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -94,7 +95,7 @@ CREATE TABLE `users_list` (
 
 LOCK TABLES `users_list` WRITE;
 /*!40000 ALTER TABLE `users_list` DISABLE KEYS */;
-INSERT INTO `users_list` VALUES (00001,'細江由美','女','1966-03-19',53,NULL,'2020-03-10 20:17:56'),(00002,'細江洸作','男','1990-10-25',29,'00001','2020-03-10 20:19:23');
+INSERT INTO `users_list` VALUES (00001,'細江由美','女','1966-03-19',53,NULL,'abcd12345678','2020-03-10 20:17:56'),(00002,'細江洸作','男','1990-10-25',29,'00001','hosoe1234567','2020-03-10 20:19:23');
 /*!40000 ALTER TABLE `users_list` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -107,4 +108,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-22 14:51:38
+-- Dump completed on 2020-03-24 19:31:18

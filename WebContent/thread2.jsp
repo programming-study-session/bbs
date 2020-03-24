@@ -18,7 +18,7 @@
 
 		thread_no_info = thread_info_result_set.getString(1);
 		thread_title_info = thread_info_result_set.getString(2);
-	}
+		}
 	%>
 
 <h1>java•×‹­‰ï</h1>
