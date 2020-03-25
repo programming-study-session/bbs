@@ -8,6 +8,7 @@
 		ResultSet comment_result_set = (ResultSet) request.getAttribute("comment_kekka");
 		ResultSet thread_result_set = (ResultSet) request.getAttribute("thread_kekka");
 		ResultSet thread_info_result_set = (ResultSet) request.getAttribute("thread_info_kekka");
+		String user_id_set = (String)request.getAttribute("user_id_set");
 		String thread_no_info = null;
 		String thread_title_info = null;
 	%>
@@ -27,7 +28,7 @@
 			while (thread_result_set.next()) {
 		%>
 
-<p><a href="./Search?thread_id=<%=thread_result_set.getString(1)%>"><%=thread_result_set.getString(2)%></a></p>
+<p><a href="./Search?thread_id=<%=thread_result_set.getString(1)%>&UserID=<%=user_id_set%>"><%=thread_result_set.getString(2)%></a></p>
 
 		<%
 			}
@@ -35,7 +36,7 @@
 <fieldset>
 		<legend>トピックを追加する</legend>
 	<form action="./ThreadEdit" method="POST">
-		<input type="hidden" name="UserID" value="00002">
+		<input type="hidden" name="UserID" value="<%=user_id_set%>">
 		<input type="text" name="topic" style="width:25.0em;">
 		<input type="submit" value="作成">
 	</form>
@@ -70,7 +71,7 @@
 <form action="./CommentEdit" method="post">
 <br>
 	<fieldset>
-		<input type="hidden" name="UserId" value="00002">
+		<input type="hidden" name="UserId" value="<%=user_id_set%>">
 	<legend>メッセージ</legend>
 		<input type="text" name="comment" style="width:40.0em;"style="height:10.0em;">
 		<input type="hidden" name="thread_id" value="<%=thread_no_info%>" />
