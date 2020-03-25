@@ -65,6 +65,9 @@ public class Login extends HttpServlet {
 		//入力されたパスワード情報が一致した場合の処理
 		if(true_password != null && enter_password.equals(true_password)) {
 
+			//user_idを遷移ページへ、引渡し（Attributeで追加する）
+			request.setAttribute("user_id_set", user_id);
+
 			// スレッドコメント読み出し
 
 				// sql文作成の準備 (コメントの読み出し)
