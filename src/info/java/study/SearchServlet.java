@@ -33,10 +33,16 @@ public class SearchServlet extends HttpServlet {
 		// 文字コードの設定
 		request.setCharacterEncoding("Windows-31J");
 
-		// thread_id(読み出し対象のスレッド情報)取得
+		// thread_id(読み出し対象のスレッド情報)を取得
 		 String thread_id = request.getParameter("thread_id");
+		 //ユーザーIDを取得
+		 String user_id = request.getParameter("UserID");
 
 		try {
+
+			//user_idを遷移ページへ、引渡し（Attributeで追加する）
+			request.setAttribute("user_id_set", user_id);
+
 			// JDBC Driver の登録
 			Class.forName("com.mysql.jdbc.Driver");
 			// Connectionの作成
