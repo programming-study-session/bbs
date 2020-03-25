@@ -37,13 +37,16 @@ public class ThreadEdit extends HttpServlet {
 		//thread2から作成するスレッド名,スレッド作成者のIDを取得
 		String topic = request.getParameter("topic");
 		String Enter_Char = request.getParameter("topic");
-		String UserId = request.getParameter("UserID");
+		String user_id = request.getParameter("UserID");
 
 		//入力された文字列が空白でないかの判定
 		String Enter_info = Enter_char_judge.Enter_char_replace(Enter_Char);
 		System.out.println("Enter_info = '" + Enter_info + "'");
 
 		if (!Enter_info.equals("")) {
+
+			//user_idを遷移ページへ、引渡し（Attributeで追加する）
+			request.setAttribute("user_id_set", user_id);
 
 			try {
 				// JDBC Driver の登録
@@ -55,7 +58,7 @@ public class ThreadEdit extends HttpServlet {
 
 //スレッド作成者の名前をuses_listから読み出し-------------------------------------------------------------------------
 				//sql文の作成
-				String sql_thread_creator = "select * from users_list where id =" + UserId + ";";
+				String sql_thread_creator = "select * from users_list where id =" + user_id + ";";
 				System.out.println(sql_thread_creator);
 
 				//
