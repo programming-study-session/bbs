@@ -36,7 +36,7 @@ public class CommentEdit extends HttpServlet {
 		//thread2からコメントを投稿するスレッド情報を取得
 		String thread_id = request.getParameter("thread_id");
 		//thread2からコメントを投稿する方のUserIDを取得
-		String UserId = request.getParameter("UserId");
+		String user_id = request.getParameter("UserId");
 		//thread2から投稿内容を取得
 		String comment = request.getParameter("comment");
 		String Enter_Char = request.getParameter("comment");
@@ -47,6 +47,9 @@ public class CommentEdit extends HttpServlet {
 
 		if (!Enter_info.equals("")) {
 
+			//user_idを遷移ページへ、引渡し（Attributeで追加する）
+			request.setAttribute("user_id_set", user_id);
+
 			try {
 				// JDBC Driver の登録
 				Class.forName("com.mysql.jdbc.Driver");
@@ -56,7 +59,7 @@ public class CommentEdit extends HttpServlet {
 
 				//投稿者の名前を取得-------------------------------------------------------------------------------------------
 				// sql文作成
-				String sql_Contributor_name = "select * from users_list where id =" + UserId + ";";
+				String sql_Contributor_name = "select * from users_list where id =" + user_id + ";";
 				System.out.println(sql_Contributor_name);
 
 				//sql実行→実行結果を代入
