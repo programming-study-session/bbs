@@ -2,7 +2,11 @@
 <%@page import="java.sql.*"%>
 
 
+
 <html>
+<head>
+<div align="right"><p><a href="http://localhost:8090/SkillShare/ChangePassword.jsp">パスワードを変更する</a></p></div>
+</head>
 <body>
 	<%
 		ResultSet comment_result_set = (ResultSet) request.getAttribute("comment_kekka");
@@ -11,7 +15,10 @@
 		String user_id_set = (String)request.getAttribute("user_id_set");
 		String thread_no_info = null;
 		String thread_title_info = null;
+		//JSP→JSPへユーザーIDを渡す
+		session.setAttribute("USER_ID",user_id_set);
 	%>
+
 
 	<%
 		//スレッド情報の取得
@@ -20,6 +27,8 @@
 		thread_no_info = thread_info_result_set.getString(1);
 		thread_title_info = thread_info_result_set.getString(2);
 		}
+		//JSP→JSPへスレッドIDを渡す//
+		session.setAttribute("THREAD_ID",thread_no_info);
 	%>
 
 <h1>java勉強会</h1>
