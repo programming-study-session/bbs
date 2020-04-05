@@ -12,6 +12,11 @@
 	</servlet>
 
 	<servlet>
+		<servlet-name>ChangePassword</servlet-name>
+		<servlet-class>info.java.study.ChangePassword</servlet-class>
+	</servlet>
+
+	<servlet>
 		<servlet-name>SearchServlet</servlet-name>
 		<servlet-class>info.java.study.SearchServlet</servlet-class>
 	</servlet>
@@ -39,6 +44,11 @@
 	<servlet-mapping>
 		<servlet-name>Login</servlet-name>
 		<url-pattern>/Login</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>ChangePassword</servlet-name>
+		<url-pattern>/ChangePassword</url-pattern>
 	</servlet-mapping>
 
 	<servlet-mapping>
