@@ -2,6 +2,6 @@
 <html>
 <body>
  <h3>管理者へ連絡して下さい</h3>
- <a href="http://localhost:8080/SkillShare/index.jsp">トップへ戻る</a>
+ <a href="http://localhost:8090/SkillShare/index.jsp">トップへ戻る</a>
 </body>
 </html>
