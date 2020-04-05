@@ -13,5 +13,3 @@
 	<p><a href="http://localhost:8090/SkillShare/index.jsp">ƒgƒbƒv‚Ö–ß‚é</a></p>
 </body>
 </html>
-
-<%@ page language="java" contentType="text/html;charset=Windows-31J"%>
