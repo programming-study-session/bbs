@@ -103,29 +103,30 @@ public class ChangePassword extends HttpServlet {
 					password_change_state =conn.prepareStatement(new String(sql_change_time));
 					password_change_state.execute();
 					password_change_state.close();
-				}
 
-				//user_id,thread_idを遷移ページへ、引渡し（Attributeで追加する）
-				request.setAttribute("user_id_set", user_id);
-				request.setAttribute("thread_id_set", thread_id);
-
-				request.getRequestDispatcher("/ChangeSuccess.jsp").forward(request, response);
-
-			}
-
-			else {
-				try {
 					//user_id,thread_idを遷移ページへ、引渡し（Attributeで追加する）
 					request.setAttribute("user_id_set", user_id);
 					request.setAttribute("thread_id_set", thread_id);
 
-					//使用したオブジェクトを終了させる
-					user_info_state.close();
-					user_info_result_set.close();
-					// 念のため、finallyでDBとの接続を切断しておく
-					conn.close();
-					response.sendRedirect("http://localhost:8090/SkillShare/ChangeFailure.jsp");
-				} catch (Exception e) {
+					request.getRequestDispatcher("/ChangeSuccess.jsp").forward(request, response);
+
+				}
+
+
+				else {
+					try {
+						//user_id,thread_idを遷移ページへ、引渡し（Attributeで追加する）
+						request.setAttribute("user_id_set", user_id);
+						request.setAttribute("thread_id_set", thread_id);
+
+						//使用したオブジェクトを終了させる
+						user_info_state.close();
+						user_info_result_set.close();
+						// 念のため、finallyでDBとの接続を切断しておく
+						conn.close();
+						response.sendRedirect("http://localhost:8090/SkillShare/ChangeFailure.jsp");
+					} catch (Exception e) {
+					}
 				}
 			}
 
