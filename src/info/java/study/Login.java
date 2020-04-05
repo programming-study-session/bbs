@@ -49,7 +49,7 @@ public class Login extends HttpServlet {
 					"root", "searchman");
 
 			//ログインに必要なユーザー情報をusers_listから読み出し
-			String sql_users_info = "select * from users_list where id =" + user_id;
+			String sql_users_info = "select * from users_list where id =" + user_id + ";";
 			System.out.println(sql_users_info);
 			user_info_state =conn.prepareStatement(new String(sql_users_info));
 			user_info_state.execute();
@@ -131,6 +131,8 @@ public class Login extends HttpServlet {
 				request.getRequestDispatcher("/thread2.jsp").forward(request, response);
 
 				// 使用したオブジェクトを終了させる
+				user_info_state.close();
+				user_info_result_set.close();
 				comment_result_set.close();
 				thread_result_set.close();
 				thread_info_result_set.close();
