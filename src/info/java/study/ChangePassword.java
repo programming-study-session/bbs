@@ -97,7 +97,6 @@ public class ChangePassword extends HttpServlet {
 					String sha256_new_password = DigestUtils.sha256Hex(new_password);
 					String sql_new_password = "UPDATE users_list SET password = "+ "\"" + sha256_new_password + "\"" + " WHERE id =" + user_id + ";";
 					System.out.println(sql_new_password);
-					System.out.println(sql_new_password);
 
 					new_password_state =conn.prepareStatement(new String(sql_new_password));
 					new_password_state.execute();
