@@ -83,7 +83,7 @@ CREATE TABLE `users_list` (
   `birthday` date DEFAULT NULL,
   `age` int(3) DEFAULT NULL,
   `mother_id` char(5) DEFAULT NULL,
-  `password` char(16) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
   `last_update` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -95,7 +95,7 @@ CREATE TABLE `users_list` (
 
 LOCK TABLES `users_list` WRITE;
 /*!40000 ALTER TABLE `users_list` DISABLE KEYS */;
-INSERT INTO `users_list` VALUES (00001,'細江由美','女','1966-03-19',53,NULL,'abcd12345678','2020-03-10 20:17:56'),(00002,'細江洸作','男','1990-10-25',29,'00001','hosoe9632','2020-04-05 17:51:00');
+INSERT INTO `users_list` VALUES (00001,'細江由美','女','1966-03-19',53,NULL,'c6b8171b041aa8d558a69ee776067ce39aed5ebcb1b2c57ee0fae7f45ff8eee4','2020-04-18 08:17:28'),(00002,'細江洸作','男','1990-10-25',29,'00001','a0f3285b07c26c0dcd2191447f391170d06035e8d57e31a048ba87074f3a9a15','2020-04-18 08:14:00');
 /*!40000 ALTER TABLE `users_list` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -108,4 +108,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-05 18:10:54
+-- Dump completed on 2020-04-18  8:24:09
