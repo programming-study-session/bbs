@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
 public class Login extends HttpServlet {
 
 	/**
@@ -60,10 +62,12 @@ public class Login extends HttpServlet {
 			while(user_info_result_set.next()) {
 				true_password = user_info_result_set.getString(7);
 			}
-			System.out.println(true_password);
+
+			//入力された現在のパスワードのハッシュ化
+			String sha256_enter_password = DigestUtils.sha256Hex(enter_password);
 
 		//入力されたパスワード情報が一致した場合の処理
-		if(true_password != null && enter_password.equals(true_password)) {
+		if(sha256_enter_password.equals(true_password)) {
 
 			//user_idを遷移ページへ、引渡し（Attributeで追加する）
 			request.setAttribute("user_id_set", user_id);
