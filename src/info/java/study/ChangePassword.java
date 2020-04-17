@@ -55,9 +55,11 @@ public class ChangePassword extends HttpServlet {
 				true_password = user_info_result_set.getString(7);
 			}
 
-			System.out.println(true_password);
+			//入力された現在のパスワードのハッシュ化
+			String sha256_now_password = DigestUtils.sha256Hex(now_password);
 
-			if(now_password.equals(true_password) && new_password.equals(new_password_2)) {
+			//現在のパスワードの比較
+			if(sha256_now_password.equals(true_password) && new_password.equals(new_password_2)) {
 				/*パスワードルール
 				(1)半角小文字英語,半角大文字英語,半角数字の3つの要素の内2つ以上含まれていること。
 				(2)8文字以上であること*/
@@ -89,8 +91,11 @@ public class ChangePassword extends HttpServlet {
 				}
 
 				//パスワードの設定条件クリア時のパスワード変更処理を開始する
-				if(Password_Count >= 8 && Password_Count <= 16 && True_Count>=2) {
-					String sql_new_password = "UPDATE users_list SET password = "+ "\"" + new_password + "\"" + " WHERE id =" + user_id + ";";
+				if(Password_Count >= 8 && True_Count==3) {
+					//パスワードのハッシュ化を行う
+					String sha256_new_password = DigestUtils.sha256Hex(new_password);
+					String sql_new_password = "UPDATE users_list SET password = "+ "\"" + sha256_new_password + "\"" + " WHERE id =" + user_id + ";";
+					System.out.println(sql_new_password);
 					System.out.println(sql_new_password);
 
 					new_password_state =conn.prepareStatement(new String(sql_new_password));
