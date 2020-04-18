@@ -5,9 +5,9 @@
 
 <html>
 <head>
-<div align="right"><p><a href="http://localhost:8090/SkillShare/ChangePassword.jsp">パスワードを変更する</a></p></div>
 </head>
 <body>
+	<div align="right"><p><a href="http://localhost:8090/SkillShare/ChangePassword.jsp">パスワードを変更する</a></p></div>
 	<%
 		ResultSet comment_result_set = (ResultSet) request.getAttribute("comment_kekka");
 		ResultSet thread_result_set = (ResultSet) request.getAttribute("thread_kekka");
