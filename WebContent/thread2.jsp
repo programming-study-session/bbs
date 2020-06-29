@@ -11,25 +11,14 @@
 	<%
 		ResultSet comment_result_set = (ResultSet) request.getAttribute("comment_kekka");
 		ResultSet thread_result_set = (ResultSet) request.getAttribute("thread_kekka");
-		ResultSet thread_info_result_set = (ResultSet) request.getAttribute("thread_info_kekka");
 		String user_id_set = (String)request.getAttribute("user_id_set");
-		String thread_no_info = null;
-		String thread_title_info = null;
+		String thread_title_info = (String)request.getAttribute("thread_title");;
+		String thread_id_info = (String)request.getAttribute("thread_id_set");
 		//JSP→JSPへユーザーIDを渡す
 		session.setAttribute("USER_ID",user_id_set);
+		session.setAttribute("THREAD_ID",thread_id_info);
 	%>
 
-
-	<%
-		//スレッド情報の取得
-		while(thread_info_result_set.next()){
-
-		thread_no_info = thread_info_result_set.getString(1);
-		thread_title_info = thread_info_result_set.getString(2);
-		}
-		//JSP→JSPへスレッドIDを渡す//
-		session.setAttribute("THREAD_ID",thread_no_info);
-	%>
 
 <h1>java勉強会</h1>
 
@@ -83,7 +72,7 @@
 		<input type="hidden" name="UserId" value="<%=user_id_set%>">
 	<legend>メッセージ</legend>
 		<input type="text" name="comment" style="width:40.0em;"style="height:10.0em;">
-		<input type="hidden" name="thread_id" value="<%=thread_no_info%>" />
+		<input type="hidden" name="thread_id" value="<%=thread_id_info%>" />
 		<input type="submit" value="投稿">
 	</fieldset>
 </form>
