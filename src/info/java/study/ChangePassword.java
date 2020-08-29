@@ -119,6 +119,7 @@ public class ChangePassword extends HttpServlet {
 						conn.close();
 						response.sendRedirect("http://localhost:8090/SkillShare/ChangeFailure.jsp");
 					} catch (Exception e) {
+						response.sendRedirect("http://localhost:8090/SkillShare/Eroor.jsp");
 						e.printStackTrace();
 					}
 				}
@@ -144,7 +145,6 @@ public class ChangePassword extends HttpServlet {
 		String sql_users_info = "select * from users_list where id =" + user_id + ";";
 		System.out.println(sql_users_info);
 		PreparedStatement user_info_state =conn.prepareStatement(new String(sql_users_info));
-		user_info_state.execute();
 		return user_info_state.executeQuery();
 	}
 

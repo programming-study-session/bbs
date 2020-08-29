@@ -140,7 +140,6 @@ public class Login extends HttpServlet {
 		String sql_users_info = "select * from users_list where mail_adress =" + "\""+ MailAdress + "\"" + ";";
 		System.out.println(sql_users_info);
 		PreparedStatement user_info_state =conn.prepareStatement(new String(sql_users_info));
-		user_info_state.execute();
 		return user_info_state.executeQuery();
 	}
 
@@ -150,7 +149,6 @@ public class Login extends HttpServlet {
 		String sql_comment_read = "select * from comment_list where thread_id =" + thread_id + ";";
 		System.out.println(sql_comment_read);
 		PreparedStatement comment_read_state = conn.prepareStatement(new String(sql_comment_read));
-		comment_read_state.execute();
 		return comment_read_state.executeQuery();
 	}
 	//テーブルcomment_listから読み出し
@@ -159,7 +157,6 @@ public class Login extends HttpServlet {
 		String sql_thread_read = "select * from thread_list;";
 		System.out.println(sql_thread_read);
 		PreparedStatement thread_read_state = conn.prepareStatement(new String(sql_thread_read));
-		thread_read_state.execute();
 		return thread_read_state.executeQuery();
 
 	}
